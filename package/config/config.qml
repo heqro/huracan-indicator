@@ -32,7 +32,7 @@ import org.kde.latte.components 1.0 as LatteComponents
 ColumnLayout {
     Layout.fillWidth: true
 
-    readonly property bool deprecatedPropertiesAreHidden: dialog && dialog.hasOwnProperty("deprecatedOptionsAreHidden") && dialog.deprecatedOptionsAreHidden
+    readonly property bool deprecatedPropertiesAreHidden: true/*dialog && dialog.hasOwnProperty("deprecatedOptionsAreHidden") && dialog.deprecatedOptionsAreHidden*/
 
     LatteComponents.SubHeader {
         text: i18n("Appearance")
