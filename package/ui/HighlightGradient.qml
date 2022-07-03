@@ -22,6 +22,7 @@ MouseArea {
         target: radialGradient
         property: 'x'
         from: radialGradient.x
+        duration: 500
         to: -radialGradient.width/2
         easing.type: Easing.InOutQuad
     }
@@ -31,12 +32,13 @@ MouseArea {
         target: radialGradient
         property: 'y'
         from: radialGradient.y
+        duration: 500
         to: -radialGradient.height/2
         easing.type: Easing.InOutQuad
     }
 
     onExited: {
-        if (!isMinimized) {
+        if (isActive) {
             xAnimation.start()
             yAnimation.start()
         }
@@ -97,7 +99,7 @@ MouseArea {
         Behavior on opacity {
             NumberAnimation {
                 id: opacityTransition
-                duration: locator.containsMouse ? 400 : 150
+                duration: 400
                 easing.type: Easing.InOutQuad
             }
         }
