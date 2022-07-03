@@ -168,12 +168,12 @@ Item{
         }
     }
 
-    Rectangle {
+      Rectangle {
         id: borderRectangle
         anchors.fill: parent
         color: "transparent"
         border.width: 1
-        border.color: "#cc101010"
+        border.color: theme.backgroundColor
         radius: backRect.radius
         clip: true
 
@@ -183,8 +183,9 @@ Item{
             radius: backRect.radius
             color: "transparent"
             border.width: 1
-            border.color: "#50dedede"
+            border.color: Qt.rgba(theme.textColor.r,theme.textColor.g,theme.textColor.b, isMinimized ? 0.15 : 0.35)
         }
     }
+
 
 }
