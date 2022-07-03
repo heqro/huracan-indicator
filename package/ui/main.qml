@@ -56,6 +56,8 @@ LatteComponents.IndicatorItem {
     }
     readonly property color backgroundColor: indicator.palette.backgroundColor
 
+    providesHoveredAnimation: true
+
     function colorBrightness(color) {
         return colorBrightnessFromRGB(color.r * 255, color.g * 255, color.b * 255);
     }
