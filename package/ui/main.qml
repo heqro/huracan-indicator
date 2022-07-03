@@ -42,7 +42,7 @@ LatteComponents.IndicatorItem {
     readonly property int shownWindows: indicator.windowsCount - indicator.windowsMinimizedCount
     readonly property int maxDrawnMinimizedWindows: shownWindows > 0 ? Math.min(indicator.windowsMinimizedCount,2) : 3
 
-    readonly property int groupItemLength: indicator.currentIconSize * 0.08
+    readonly property int groupItemLength: indicator.currentIconSize * 0.2
     readonly property int groupsSideMargin: indicator.windowsCount <= 1 ? 0 : (Math.min(indicator.windowsCount-1,2) * root.groupItemLength)
 
     readonly property real backColorBrightness: colorBrightness(indicator.palette.backgroundColor)
