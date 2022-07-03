@@ -29,13 +29,13 @@ Item{
     property bool isActive: indicator.isActive || (indicator.isWindow && indicator.hasActive)
     property bool showProgress: false
 
-    Rectangle {
-        anchors.fill: parent
-        radius: backRect.radius
-        color: indicator.iconBackgroundColor
-        visible: isActive
-        opacity: 0.65
-    }
+    //Rectangle {
+        //anchors.fill: parent
+        //radius: backRect.radius
+        //color: indicator.iconBackgroundColor
+        //visible: isActive
+        //opacity: 0.65
+    //}
 
     Loader {
         anchors.fill: parent
@@ -49,7 +49,7 @@ Item{
                     width: backRect.width * (Math.min(indicator.progress, 100) / 100)
                     height: backRect.height
 
-                    color: theme.neutralTextColor
+                    color: theme.positiveTextColor
                 }
 
                 visible: false
@@ -104,19 +104,6 @@ Item{
         clip: true
 
         HoverGradient {moving: false}
-        //HoverGradient {}
-
-        OpacityMask {
-            anchors.horizontalCenter: parent.left
-            anchors.verticalCenter: parent.top
-            width: glowGradient.width
-            height: glowGradient.height
-
-            source: glowGradient
-            maskSource: gradientMask
-            visible: backRect.visible || borderRectangle.visible
-            opacity: indicator.isHovered ? indicator.configuration.glowOpacity + 0.2 : indicator.configuration.glowOpacity
-        }
     }
 
       Rectangle {

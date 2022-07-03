@@ -128,55 +128,6 @@ ColumnLayout {
                 Layout.maximumWidth: theme.mSize(theme.defaultFont).width * 4
             }
         }
-
-        RowLayout {
-            Layout.fillWidth: true
-            spacing: 2
-
-            PlasmaComponents.Label {
-                Layout.minimumWidth: implicitWidth
-                horizontalAlignment: Text.AlignLeft
-                Layout.rightMargin: units.smallSpacing
-                text: i18n("Glow Opacity")
-            }
-
-            LatteComponents.Slider {
-                id: glowOpacitySlider
-                Layout.fillWidth: true
-
-                leftPadding: 0
-                value: indicator.configuration.glowOpacity * 100
-                from: 0
-                to: 80
-                stepSize: 5
-                wheelEnabled: false
-
-                function updateGlowOpacity() {
-                    if (!pressed) {
-                        indicator.configuration.glowOpacity = value/100;
-                    }
-                }
-
-                onPressedChanged: {
-                    updateGlowOpacity();
-                }
-
-                Component.onCompleted: {
-                    valueChanged.connect(updateGlowOpacity);
-                }
-
-                Component.onDestruction: {
-                    valueChanged.disconnect(updateGlowOpacity);
-                }
-            }
-
-            PlasmaComponents.Label {
-                text: i18nc("number in percentage, e.g. 85 %","%0 %").arg(glowOpacitySlider.value)
-                horizontalAlignment: Text.AlignRight
-                Layout.minimumWidth: theme.mSize(theme.defaultFont).width * 4
-                Layout.maximumWidth: theme.mSize(theme.defaultFont).width * 4
-            }
-        }
     }
 
 

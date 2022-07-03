@@ -37,6 +37,8 @@ MouseArea {
         easing.type: Easing.InOutQuad
     }
 
+
+
     onExited: {
         if (isActive) {
             xAnimation.start()
@@ -45,6 +47,8 @@ MouseArea {
     }
 
     onEntered: {
+        xAnimation.stop()
+        yAnimation.stop()
         initGradientX.when = false
         initGradientY.when = false
     }
@@ -150,25 +154,6 @@ MouseArea {
         }
 
         visible: false
-    }
-
-    Rectangle {
-        anchors.fill: parent
-        radius: 4
-        color: "transparent"
-        clip: true
-
-        OpacityMask {
-            anchors.horizontalCenter: parent.left
-            anchors.verticalCenter: parent.top
-            width: glowGradient.width
-            height: glowGradient.height
-
-            source: glowGradient
-            maskSource: gradientMask
-            visible: backRect.visible || borderRectangle.visible
-            opacity: indicator.isHovered ? indicator.configuration.glowOpacity + 0.2 : indicator.configuration.glowOpacity
-        }
     }
 }
 
