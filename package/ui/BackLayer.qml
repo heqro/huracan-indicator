@@ -92,58 +92,9 @@ Item{
         clip: true
     }
 
-    RadialGradient{
-        id: glowGradient
-        anchors.verticalCenter: parent.top
-        anchors.horizontalCenter: parent.left
-        width: 2.5 * parent.width
-        height: 2 * parent.height
-        visible: false
+    HighlightGradient {
         clip: true
-
-        gradient: Gradient {
-            GradientStop { position: 0.0; color: "#ccfcfcfc"}
-            GradientStop { position: 0.05; color: "#bbfcfcfc"}
-            GradientStop { position: 0.2; color: "#55fcfcfc"}
-            GradientStop { position: 0.48; color: "transparent" }
-        }
-        //! States
-        states: [
-            State {
-                name: "top"
-                when: !indicator.configuration.glowReversed
-
-                AnchorChanges {
-                    target: glowGradient
-                    anchors{horizontalCenter:parent.horizontalCenter; verticalCenter:parent.top}
-                }
-            },
-            State {
-                name: "bottom"
-                when: indicator.configuration.glowReversed
-
-                AnchorChanges {
-                    target: glowGradient
-                    anchors{horizontalCenter:parent.horizontalCenter; verticalCenter:parent.bottom}
-                }
-            }
-        ]
-    }
-
-    Item {
-        id: gradientMask
-        anchors.fill: glowGradient
-
-        Rectangle {
-            id: glowMaskRect
-            anchors.top: parent.verticalCenter
-            anchors.left: parent.horizontalCenter
-            width: root.width
-            height: root.height
-            radius: backRect.radius
-        }
-
-        visible: false
+        z: 1
     }
 
     Rectangle {
@@ -153,7 +104,7 @@ Item{
         clip: true
 
         HoverGradient {moving: false}
-        HoverGradient {}
+        //HoverGradient {}
 
         OpacityMask {
             anchors.horizontalCenter: parent.left
