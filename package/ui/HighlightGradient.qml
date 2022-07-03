@@ -68,7 +68,7 @@ MouseArea {
             id: initGradientX
             target: radialGradient
             property: 'x'
-            when: !locator.containsMouse
+            when: true
             value: -radialGradient.width / 2
         }
 
@@ -76,13 +76,24 @@ MouseArea {
             id: initGradientY
             target: radialGradient
             property: 'y'
-            when: !locator.containsMouse
+            when: true
             value: -radialGradient.height / 2
         }
 
         width: parent.width * 2
         height: parent.height * 2
-        opacity: locator.containsMouse ? 0.85 : indicator.isMinimized ? 0.05 : 0.60
+        opacity: {
+
+            if (!indicator.isActive && !locator.containsMouse) return 0
+            if (indicator.isActive) return 0.85
+
+            if (locator.containsMouse) {
+                return 0.5
+            } else {
+                return 0.01
+            }
+        }
+
         Behavior on opacity {
             NumberAnimation {
                 id: opacityTransition
