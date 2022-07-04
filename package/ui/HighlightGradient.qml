@@ -123,43 +123,5 @@ MouseArea {
 
         horizontalRadius:1.5 * (2.2*centerY + Math.sqrt(diffX * diffX + diffY * diffY)/2)
         verticalRadius:  1.5 * (2.2*centerX + Math.sqrt(diffX * diffX + diffY * diffY)/2)
-
-        states: [
-            State {
-                name: "top"
-                when: !indicator.configuration.glowReversed
-
-                AnchorChanges {
-                    target: glowGradient
-                    anchors{horizontalCenter:parent.horizontalCenter; verticalCenter:parent.top}
-                }
-            },
-            State {
-                name: "bottom"
-                when: indicator.configuration.glowReversed
-
-                AnchorChanges {
-                    target: glowGradient
-                    anchors{horizontalCenter:parent.horizontalCenter; verticalCenter:parent.bottom}
-                }
-            }
-        ]
-    }
-
-    Item {
-        id: gradientMask
-        anchors.fill: glowGradient
-
-        Rectangle {
-            id: glowMaskRect
-            anchors.top: parent.verticalCenter
-            anchors.left: parent.horizontalCenter
-            width: root.width
-            height: root.height
-            radius: backRect.radius
-        }
-
-        visible: false
-    }
 }
 

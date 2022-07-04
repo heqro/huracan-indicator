@@ -7,14 +7,6 @@ MouseArea {
     id: locator
     anchors.fill: parent
     hoverEnabled: true
-
-    readonly property int centerX: width / 2
-    readonly property int centerY: height / 2
-
-    // arbitrary measure of distance with respect to the center
-    readonly property int diffX: Math.abs(mouseX - centerX)
-    readonly property int diffY: Math.abs(mouseY - centerY)
-
     acceptedButtons: Qt.NoButton
 
     RadialGradient {
