@@ -152,7 +152,7 @@ LatteComponents.IndicatorItem {
             id: inactiveBackLayer
             anchors.fill: parent
             anchors.rightMargin: groupsSideMargin
-            active: level.isBackground && !indicator.isActive && !indicator.isMinimized && indicator.isTask && indicator.isSquare
+            active: level.isBackground && indicator.isLauncher && indicator.isTask && indicator.isSquare
 
             sourceComponent: InactiveBackLayer {
                 anchors.fill: parent

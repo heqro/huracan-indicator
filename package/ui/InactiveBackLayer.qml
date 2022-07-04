@@ -66,7 +66,7 @@ MouseArea {
         id: rGradient
         // trick to place gradient in the lower side of the screen
         x: -parent.width / 2
-        y : 0  /*height / 2*/
+        y : 0
         width: parent.width * 2
         height: parent.height * 2
         opacity: 0 // initial binding (will break as soon as we launch animations)
