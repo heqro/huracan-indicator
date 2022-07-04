@@ -31,6 +31,7 @@ LatteComponents.IndicatorItem {
     providesFrontLayer: false
     minThicknessPadding: 0.03
     minLengthPadding: 0.25
+    providesHoveredAnimation: true // avoids the applets from featuring washed out colors
 
     readonly property bool progressVisible: indicator.hasOwnProperty("progressVisible") ? indicator.progressVisible : false
     readonly property bool isHorizontal: plasmoid.formFactor === PlasmaCore.Types.Horizontal
@@ -56,7 +57,7 @@ LatteComponents.IndicatorItem {
     }
     readonly property color backgroundColor: indicator.palette.backgroundColor
 
-    providesHoveredAnimation: true
+
 
     function colorBrightness(color) {
         return colorBrightnessFromRGB(color.r * 255, color.g * 255, color.b * 255);
