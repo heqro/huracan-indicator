@@ -161,6 +161,21 @@ ColumnLayout {
         }
     }
 
+    LatteComponents.SubHeader {
+        text: i18n("Indicators")
+    }
+
+    LatteComponents.CheckBox {
+        Layout.maximumWidth: dialog.optionsWidth
+        text: i18n("Use applications' colors for background")
+        checked: indicator.configuration.useAppsColors
+        tooltip: i18n("If the app is active, its background will be painted with its predominant icon color")
+
+        onClicked: {
+            indicator.configuration.useAppsColors = !indicator.configuration.useAppsColors;
+        }
+    }
+
     /*
     LatteComponents.CheckBoxesColumn {
         Layout.fillWidth: true

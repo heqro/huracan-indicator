@@ -20,5 +20,8 @@
     <entry name="lengthPadding" type="Double">
         <default>0.35</default>
     </entry>
+    <entry name="useAppsColors" type="Bool">
+        <default>true</default>
+    </entry>
   </group>
 </kcfg>
