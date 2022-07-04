@@ -17,6 +17,14 @@ MouseArea {
 
     acceptedButtons: Qt.NoButton
 
+
+    onContainsMouseChanged: {
+        if (!containsMouse) {
+           xAnimation.start()
+           yAnimation.start()
+        }
+    }
+
     NumberAnimation {
         id: xAnimation
         target: radialGradient
