@@ -1,5 +1,6 @@
 /*
 *  Copyright 2019  Michail Vourlakos <mvourlakos@gmail.com>
+*  Copyright 2022  Héctor Iglesias <heqromancer@gmail.com>
 *
 *  This file is part of Latte-Dock
 *
