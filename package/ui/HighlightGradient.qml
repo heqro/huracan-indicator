@@ -123,5 +123,7 @@ MouseArea {
 
         horizontalRadius:1.5 * (2.2*centerY + Math.sqrt(diffX * diffX + diffY * diffY)/2)
         verticalRadius:  1.5 * (2.2*centerX + Math.sqrt(diffX * diffX + diffY * diffY)/2)
+
+    }
 }
 
