@@ -136,7 +136,7 @@ LatteComponents.IndicatorItem {
             }
         }
 
-        Loader{
+        Loader { // this boy right here is shown
             id: backLayer
             anchors.fill: parent
             anchors.rightMargin: groupsSideMargin
@@ -144,18 +144,16 @@ LatteComponents.IndicatorItem {
 
             sourceComponent: BackLayer{
                 anchors.fill: parent
-
                 showProgress: root.progressVisible
             }
         }
 
-        Loader{
+        Loader { // this babe is shown when clicking in plasmoids and such things
             id: plasmaBackHighlight
             anchors.fill: parent
             active: level.isBackground && indicator.isActive && !indicator.isSquare
 
-            sourceComponent: PlasmaHighlight{
-            }
+            sourceComponent: PlasmaHighlight{}
         }
     }
 }

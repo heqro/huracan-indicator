@@ -38,7 +38,7 @@ Item{
         //opacity: 0.65
     //}
 
-    Loader {
+    Loader { // progress bar design loader
         anchors.fill: parent
         asynchronous: true
         active: indicator.configuration.progressAnimationEnabled && rectangleItem.showProgress && indicator.progress>0
@@ -85,7 +85,7 @@ Item{
         }
     }
 
-    Rectangle {
+    Rectangle { // this boy right here shows inactivity
         id: backRect
         anchors.fill: parent
         radius: indicator.currentIconSize / 16
@@ -93,7 +93,7 @@ Item{
         clip: true
     }
 
-    HighlightGradient {
+    HighlightGradient { // show user pointer with launched applications
         clip: true
         z: 1
     }
