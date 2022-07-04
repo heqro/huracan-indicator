@@ -32,6 +32,7 @@ LatteComponents.IndicatorItem {
     minThicknessPadding: 0.03
     minLengthPadding: 0.25
     providesHoveredAnimation: true // avoids the applets from featuring washed out colors
+    providesClickedAnimation: true
 
     readonly property bool progressVisible: indicator.hasOwnProperty("progressVisible") ? indicator.progressVisible : false
     readonly property bool isHorizontal: plasmoid.formFactor === PlasmaCore.Types.Horizontal
