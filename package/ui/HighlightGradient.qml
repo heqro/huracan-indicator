@@ -109,7 +109,7 @@ MouseArea {
         Behavior on opacity {
             NumberAnimation {
                 id: opacityTransition
-                duration: 400
+                duration: 250
                 easing.type: Easing.InOutQuad
             }
         }
