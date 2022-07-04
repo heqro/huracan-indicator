@@ -64,23 +64,84 @@ MouseArea {
 
     RadialGradient {
         id: rGradient
-        // trick to place gradient in the lower side of the screen
-        x: -parent.width / 2
-        y : 0
-        width: parent.width * 2
         height: parent.height * 2
+        width: parent.width * 2
         opacity: 0 // initial binding (will break as soon as we launch animations)
-
 
         gradient: Gradient {
             GradientStop { position: 0.0; color: "#ccfcfcfc"}
             GradientStop { position: 0.05; color: "#bbfcfcfc"}
             GradientStop { position: 0.2; color: "#55fcfcfc"}
-            GradientStop { position: 0.48; color: "transparent" }
+            GradientStop { position: 0.3; color: "transparent" }
         }
 
-        horizontalRadius: height / 2
-        verticalRadius:   parent.width / 4
+        states: [
+            State {
+                name: "left"
+                when: (plasmoid.location === PlasmaCore.Types.LeftEdge)
+
+                AnchorChanges {
+                    target: rGradient
+                    anchors{ top:undefined; bottom:undefined; left:undefined; right:parent.right;
+                        horizontalCenter: undefined; verticalCenter: parent.verticalCenter}
+                }
+
+                PropertyChanges {
+                    target: rGradient
+                    verticalRadius: width
+                    horizontalRadius: height / 6
+                }
+            },
+            State {
+                name: "right"
+                when: (plasmoid.location === PlasmaCore.Types.RightEdge)
+
+                AnchorChanges {
+                    target: rGradient
+                    anchors{ top:undefined; bottom:undefined; left:parent.left; right:undefined;
+                        horizontalCenter: undefined; verticalCenter: parent.verticalCenter}
+                }
+
+                PropertyChanges {
+                    target: rGradient
+                    verticalRadius: width
+                    horizontalRadius: height / 6
+                }
+
+            },
+            State {
+                name: "bottom"
+                when: (plasmoid.location === PlasmaCore.Types.BottomEdge)
+
+                AnchorChanges {
+                    target: rGradient
+                    anchors{ top:parent.top; bottom:undefined; left:undefined; right:undefined;
+                        horizontalCenter: parent.horizontalCenter; verticalCenter: undefined}
+                }
+
+                PropertyChanges {
+                    target: rGradient
+                    horizontalRadius: height
+                    verticalRadius: width / 6
+                }
+            },
+            State {
+                name: "top"
+                when: (plasmoid.location === PlasmaCore.Types.TopEdge)
+
+                AnchorChanges {
+                    target: rGradient
+                    anchors{ top:undefined; bottom:parent.bottom; left:undefined; right:undefined;
+                        horizontalCenter: parent.horizontalCenter; verticalCenter: undefined}
+                }
+
+                PropertyChanges {
+                    target: rGradient
+                    horizontalRadius: height
+                    verticalRadius: width / 6
+                }
+            }
+        ]
     }
 
 }
