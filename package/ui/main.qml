@@ -148,6 +148,18 @@ LatteComponents.IndicatorItem {
             }
         }
 
+        Loader { // this boy right here is shown
+            id: inactiveBackLayer
+            anchors.fill: parent
+            anchors.rightMargin: groupsSideMargin
+            active: level.isBackground && !indicator.isActive && !indicator.isMinimized && indicator.isTask && indicator.isSquare
+
+            sourceComponent: InactiveBackLayer {
+                anchors.fill: parent
+                clip: true
+            }
+        }
+
         Loader { // this babe is shown when clicking in plasmoids and such things
             id: plasmaBackHighlight
             anchors.fill: parent
