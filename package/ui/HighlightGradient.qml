@@ -6,8 +6,6 @@ MouseArea {
     anchors.fill: parent
     hoverEnabled: true
 
-    property bool moving: true
-
     readonly property int centerX: width / 2
     readonly property int centerY: height / 2
 
@@ -123,8 +121,8 @@ MouseArea {
             GradientStop { position: 0.48; color: "transparent" }
         }
 
-        horizontalRadius: moving ? 1.5 * (2.2*centerY + Math.sqrt(diffX * diffX + diffY * diffY)/2) : height * 3
-        verticalRadius:   moving ? 1.5 * (2.2*centerX + Math.sqrt(diffX * diffX + diffY * diffY)/2) : width * 3
+        horizontalRadius:1.5 * (2.2*centerY + Math.sqrt(diffX * diffX + diffY * diffY)/2)
+        verticalRadius:  1.5 * (2.2*centerX + Math.sqrt(diffX * diffX + diffY * diffY)/2)
 
         states: [
             State {

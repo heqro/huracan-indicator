@@ -103,7 +103,7 @@ Item{
         color: "transparent"
         clip: true
 
-        HoverGradient {}
+        StatusGradient {}
     }
 
       Rectangle {

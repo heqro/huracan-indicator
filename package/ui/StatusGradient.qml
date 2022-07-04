@@ -23,7 +23,7 @@ MouseArea {
         y : 0
         width: parent.width * 2
         height: parent.height * 2
-        opacity: indicator.isMinimized ? 0.05 : 0.60
+        opacity: indicator.isMinimized ? 0.05 : 1
         Behavior on opacity {
             NumberAnimation {
                 id: opacityTransition
