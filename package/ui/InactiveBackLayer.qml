@@ -33,7 +33,6 @@ MouseArea {
     readonly property int animationsDuration: 250
 
     onEntered: {
-        console.log('entrado', rGradient.x)
         decreaseOpacity.stop()
         increaseOpacity.restart()
     }
