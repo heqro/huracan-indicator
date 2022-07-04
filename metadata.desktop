@@ -1,6 +1,6 @@
 [Desktop Entry]
-Name=Aereo
-Comment=Latte Win7 style indicator
+Name=Huracán
+Comment=An Aero style inspired indicator design
 
 Encoding=UTF-8
 Type=Service
@@ -12,9 +12,9 @@ X-Latte-MainScript=ui/main.qml
 X-Latte-ConfigUi=config/config.qml
 X-Latte-ConfigXml=config/main.xml
 
-X-KDE-PluginInfo-Author=Michail Vourlakos
-X-KDE-PluginInfo-Email=mvourlakos@gmail.com
-X-KDE-PluginInfo-Name=org.kde.latte.aerosito
+X-KDE-PluginInfo-Author=Héctor Iglesias
+X-KDE-PluginInfo-Email=heqromancer@gmail.com
+X-KDE-PluginInfo-Name=org.kde.latte.hurricane
 X-KDE-PluginInfo-Version=0.2.1
 X-KDE-PluginInfo-Category=Latte Indicator
 X-KDE-PluginInfo-License=GPL v2+
