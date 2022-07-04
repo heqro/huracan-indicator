@@ -1,12 +1,12 @@
 import QtQuick 2.0
 import QtGraphicalEffects 1.0
 
+import org.kde.plasma.core 2.0 as PlasmaCore
+
 MouseArea {
     id: locator
     anchors.fill: parent
     hoverEnabled: true
-
-    property bool moving: true
 
     readonly property int centerX: width / 2
     readonly property int centerY: height / 2
@@ -19,11 +19,11 @@ MouseArea {
 
     RadialGradient {
         // trick to center gradient inside cursor
-        x: moving ? mouseX - width / 2 : 0
-        y : moving ? mouseY - height / 2 : 0
+        x: 0
+        y : 0
         width: parent.width * 2
         height: parent.height * 2
-        opacity: moving ? locator.containsMouse * 0.85 : indicator.isMinimized ? 0.05 : 0.60
+        opacity: indicator.isMinimized ? 0.05 : 0.60
         Behavior on opacity {
             NumberAnimation {
                 id: opacityTransition
@@ -35,7 +35,12 @@ MouseArea {
         gradient: Gradient {
             GradientStop { position: 0.0;
                 color: {
-                    if (moving || isActive || !indicator.isMinimized) return indicator.iconBackgroundColor
+                    if (isActive || !indicator.isMinimized)  {
+                        if (indicator.configuration.useAppsColors)
+                            return indicator.iconBackgroundColor
+                        else
+                            return theme.highlightColor
+                    }
                     if (indicator.isMinimized && !opacityTransition.running) return theme.textColor
                     else return 'transparent'
                 }
@@ -43,8 +48,8 @@ MouseArea {
             GradientStop { position: 0.45; color: 'transparent'}
         }
 
-        horizontalRadius: moving ? 1.5 * (2.2*centerY + Math.sqrt(diffX * diffX + diffY * diffY)/2) : height * 3
-        verticalRadius:   moving ? 1.5 * (2.2*centerX + Math.sqrt(diffX * diffX + diffY * diffY)/2) : width * 3
+        horizontalRadius: height * 2
+        verticalRadius:   width * 2
     }
 }
 
