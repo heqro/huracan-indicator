@@ -46,7 +46,7 @@ MouseArea {
         id: increaseOpacity
         target: rGradient
         property: 'opacity'
-        duration: animationsDuration
+        duration: animationsDuration + 300
         from: 0.05
         to: 1
         easing.type: Easing.InOutQuad
