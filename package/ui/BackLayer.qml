@@ -41,47 +41,10 @@ Item{
     Loader { // progress bar design loader
         anchors.fill: parent
         asynchronous: true
-        active: indicator.configuration.progressAnimationEnabled && rectangleItem.showProgress && indicator.progress>0
-        sourceComponent: Item{
-            Item{
-                id: progressFrame
-                anchors.fill: parent
-                Rectangle {
-                    width: backRect.width * (Math.min(indicator.progress, 100) / 100)
-                    height: backRect.height
-
-                    color: theme.positiveTextColor
-                }
-
-                visible: false
-            }
-
-            Item {
-                id: progressMask
-                anchors.fill: parent
-
-                Rectangle {
-                    anchors.fill: parent
-                    anchors.margins: 1
-                    radius: backRect.radius
-                    color: "red"
-                }
-                visible: false
-            }
-
-            Rectangle {
-                anchors.fill: parent
-                radius: backRect.radius
-                color: "transparent"
-                clip: true
-
-                OpacityMask {
-                    anchors.fill: parent
-                    source: progressFrame
-                    maskSource: progressMask
-                    opacity: 0.5
-                }
-            }
+        active: indicator.configuration.progressAnimationEnabled && rectangleItem.showProgress && indicator.progress > 0
+        sourceComponent: LoadingLayer {
+            progress: Math.min(indicator.progress, 100) / 100
+            radius: backRect.radius * 2
         }
     }
 
@@ -124,6 +87,7 @@ Item{
             border.width: 1
             border.color: Qt.rgba(theme.textColor.r,theme.textColor.g,theme.textColor.b, isMinimized ? 0.15 : 0.35)
         }
+        z: 1
     }
 
 

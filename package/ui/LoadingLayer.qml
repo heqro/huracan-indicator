@@ -31,16 +31,84 @@ Item {
     required property int radius
 
     Rectangle {
-        width: progress * parent.width
-        height: parent.height
-        color: loadingColor
+        id: mainRect
+        anchors.fill: parent
+        color: 'transparent'
         radius: parent.radius
 
         Rectangle {
-            width: parent.width
-            height: parent.height / 4
+
+            id: loadingRect
+            width: progress * parent.width
+            height: parent.height
+            color: loadingColor
             radius: parent.radius
-            color: Qt.lighter(loadingColor, 1.5)
+            clip: true
+
+            Behavior on width {
+                SmoothedAnimation {
+                    duration: 200
+                    //velocity: 2
+                }
+            }
+
+            RadialGradient {
+                id: loadingGlow
+                width: mainRect.width * 4
+                height: mainRect.height * 4
+
+                gradient: Gradient {
+                    GradientStop { position: 0.0; color: Qt.lighter(loadingColor, 1.5) }
+                    GradientStop { position: 0.2; color: loadingColor }
+                    GradientStop { position: 0.3; color: Qt.darker(loadingColor, 1.5) }
+                }
+
+
+                x: -mainRect.width * 1.5
+                y: -mainRect.height * 1.8
+
+                horizontalRadius: width
+                verticalRadius: height / 2
+
+            }
+
+            NumberAnimation {
+                id: highlightGlowAnimationFront
+                target: loadingGlow
+                property: 'x'
+                duration: 1800
+                from: -mainRect.width * 2
+                to: -mainRect.width
+                easing.type: Easing.InOutQuad
+            }
+
+            NumberAnimation {
+                id: highlightGlowAnimationBack
+                target: loadingGlow
+                property: 'x'
+                duration: 1800
+                from: -mainRect.width
+                to: -mainRect.width * 2
+                easing.type: Easing.InOutQuad
+            }
+
+            Timer {
+
+                interval: 2000
+                repeat: true
+                running: true
+
+                property bool tick: true
+
+                onTriggered: {
+                    if (tick)
+                        highlightGlowAnimationFront.restart()
+                    else
+                        highlightGlowAnimationBack.restart()
+                    tick = !tick
+                }
+            }
+
         }
 
 
