@@ -111,7 +111,7 @@ LatteComponents.IndicatorItem {
         anchors.leftMargin: plasmoid.location === PlasmaCore.Types.LeftEdge ? root.screenEdgeMargin : 0
         anchors.rightMargin: plasmoid.location === PlasmaCore.Types.RightEdge ? root.screenEdgeMargin : 0
 
-        Loader {
+        Loader { // grouping layer
             anchors.right: parent.right
             anchors.verticalCenter: parent.verticalCenter
 
@@ -119,11 +119,10 @@ LatteComponents.IndicatorItem {
             active: indicator.windowsCount>=3
             opacity: 0.3
 
-            sourceComponent: GroupRect{
-            }
+            sourceComponent: GroupRect{}
         }
 
-        Loader {
+        Loader { // grouping layer
             anchors.right: parent.right
             anchors.verticalCenter: parent.verticalCenter
             anchors.rightMargin: indicator.windowsCount>2 && active ? groupItemLength : 0
@@ -132,11 +131,10 @@ LatteComponents.IndicatorItem {
             active: indicator.windowsCount>=2
             opacity: 0.6
 
-            sourceComponent: GroupRect{
-            }
+            sourceComponent: GroupRect{}
         }
 
-        Loader { // this boy right here is shown
+        Loader { // this boy right here is shown when interacting with a launched app
             id: backLayer
             anchors.fill: parent
             anchors.rightMargin: groupsSideMargin
@@ -148,7 +146,7 @@ LatteComponents.IndicatorItem {
             }
         }
 
-        Loader { // this boy right here is shown
+        Loader { // this boy right here is shown when we are interacting with an inactive app
             id: inactiveBackLayer
             anchors.fill: parent
             anchors.rightMargin: groupsSideMargin
@@ -166,6 +164,16 @@ LatteComponents.IndicatorItem {
             active: level.isBackground && indicator.isActive && !indicator.isSquare
 
             sourceComponent: PlasmaHighlight{}
+        }
+
+        Loader {
+            anchors.fill: parent
+            active: level.isBackground && indicator.isSquare && indicator.inAttention
+
+            sourceComponent: AttentionLayer {
+                anchors.fill: parent
+                clip: true
+            }
         }
     }
 }
