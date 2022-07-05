@@ -11,9 +11,15 @@ An Aero style inspired Latte indicator design.
 # Install
 
 From Latte UI: **Effects -> Indicators -> Style -> Get New Indicators...**
-From command line: `kpackagetool5 -i . -t Latte/Indicator`
+
+From command line:
+
+```kpackagetool5 -i . -t Latte/Indicator```
 
 # Update
 
 From Latte UI: **Effects -> Indicators -> Style -> Get New Indicators... -> Installed**
-From command line: `kpackagetool5 -u . -t Latte/Indicator`
+
+From command line:
+
+```kpackagetool5 -u . -t Latte/Indicator```
