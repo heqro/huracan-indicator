@@ -1,6 +1,6 @@
 # Huracán Latte Indicator
 
-An Aero style inspired Latte indicator design.
+An Aero style inspired Latte indicator design. Light on graphics and processing performance -- developed with ❤️‍ and a Celeron processor.
 
 ![](./gallery/Screenshot_20220705_183236.png)
 
