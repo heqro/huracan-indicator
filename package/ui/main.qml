@@ -166,14 +166,14 @@ LatteComponents.IndicatorItem {
             sourceComponent: PlasmaHighlight{}
         }
 
-        Loader {
-            anchors.fill: parent
-            active: level.isBackground && indicator.isSquare && indicator.inAttention
+        //Loader {
+            //anchors.fill: parent
+            //active: level.isBackground && indicator.isSquare && indicator.inAttention
 
-            sourceComponent: AttentionLayer {
-                anchors.fill: parent
-                clip: true
-            }
-        }
+            //sourceComponent: AttentionLayer {
+                //anchors.fill: parent
+                //clip: true
+            //}
+        //}
     }
 }
